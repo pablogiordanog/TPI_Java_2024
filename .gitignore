@@ -1,0 +1,12 @@
+# Archivos de .idea
+.idea
+
+#Archivos de complilacion
+out
+*.class
+*.bkp
+
+### Mac OS ###
+.DS_Store
+
+gastronimiaycocina-proyect/target/*.*
