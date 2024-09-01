@@ -5,6 +5,7 @@ import ar.com.gastronomiaycocina.entity.Evento;
 import ar.com.gastronomiaycocina.enumeration.Especialidad;
 import ar.com.gastronomiaycocina.service.chef.ChefService;
 import ar.com.gastronomiaycocina.service.evento.EventoService;
+import ar.com.gastronomiaycocina.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +35,7 @@ public class ChefServiceImpl implements ChefService {
         System.out.println("Registrar Chef");
         System.out.println("==============");
 
-        System.out.println("Ingrese el Nombre del Chef");
-        String nombre = sc.nextLine();
-        sc.nextLine();
+        String nombre = Utils.ingreseTexto("Ingrese el Nombre del Chef", Boolean.TRUE);
 
         System.out.println("Cual es su Especialidad? elija una opción:");
         int opcion = 1;
@@ -84,16 +83,11 @@ public class ChefServiceImpl implements ChefService {
         System.out.println("Asignación de Chef a Evento");
         System.out.println("===========================");
 
-        System.out.println("Ingrese el ID del Chef");
-        String idChef = sc.nextLine();
-        sc.nextLine();
-        Chef chef = this.getChef(UUID.fromString(idChef));
+        UUID idChef = Utils.ingreseUUI("Ingrese el ID del Chef");
+        Chef chef = this.getChef(idChef);
         if(chef!=null){
-            System.out.println("Ingrese el ID de Evento");
-            String idEvento = sc.nextLine();
-            sc.nextLine();
-
-            Evento evento = this.getEventoService().getEvento(UUID.fromString(idEvento));
+            UUID idEvento = Utils.ingreseUUI("Ingrese el ID de Evento");
+            Evento evento = this.getEventoService().getEvento(idEvento);
             if(evento!=null){
                 evento.setChef(chef);
                 System.out.println("Asignación de Chef a Evento exitosa!");

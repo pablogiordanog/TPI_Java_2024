@@ -30,12 +30,14 @@ public class Evento {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Evento Id  :").append(this.getId()).append('\n')
-                .append("Nombre     :").append(this.getNombre()).append('\n')
-                .append("Descripción:").append(this.getDescripcion()).append('\n')
-                .append("Capacidad  :").append(this.getCapacidad()).append('\n')
-                .append("Fecha      :").append(this.getFechaHora().getDayOfMonth() + "/" + this.getFechaHora().getMonthValue() + "/" + this.getFechaHora().getYear()).append('\n')
-                .append("Hora       :").append(this.getFechaHora().getHour() + ":" + this.getFechaHora().getMinute()).append('\n')
+        stringBuilder.append("Evento Id         :").append(this.getId()).append('\n')
+                .append("Nombre            :").append(this.getNombre()).append('\n')
+                .append("Descripción       :").append(this.getDescripcion()).append('\n')
+                .append("Capacidad         :").append(this.getCapacidad()).append('\n')
+                .append("Fecha             :").append(this.getFechaHora().getDayOfMonth() + "/" + this.getFechaHora().getMonthValue() + "/" + this.getFechaHora().getYear()).append('\n')
+                .append("Hora              :").append(this.getFechaHora().getHour() + ":" + this.getFechaHora().getMinute()).append('\n')
+                .append("Capacidad Máxima  :").append(this.getCapacidad()).append('\n')
+                .append("Capacidad Restante:").append(this.getCapacidad() - this.getParticipantes().size()).append('\n')
                 .append("=====================================================").append('\n');
 
         return stringBuilder.toString();
@@ -106,6 +108,20 @@ public class Evento {
     }
 
     public boolean isLlegoACapacidadMaxima(){
-        return this.getCapacidad()>this.getParticipantes().size();
+        int totalParcipantes = this.getParticipantes().size() + 1;
+        return totalParcipantes>this.getCapacidad();
+    }
+
+    public String[] getDato(){
+        String fecha  = this.getFechaHora().getDayOfMonth() + "/" + this.getFechaHora().getMonthValue() + "/" + this.getFechaHora().getYear();
+        String hora   = this.getFechaHora().getHour() + ":" + this.getFechaHora().getMinute();
+        String[] dato = {this.getId().toString(),
+                        this.getNombre(),
+                        this.getDescripcion(),
+                        this.getCapacidad().toString(),
+                        fecha,
+                        hora,
+                        String.valueOf(this.getParticipantes().size())};
+        return dato;
     }
 }

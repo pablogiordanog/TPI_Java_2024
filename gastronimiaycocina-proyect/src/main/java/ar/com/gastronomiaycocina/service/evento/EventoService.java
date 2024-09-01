@@ -14,7 +14,7 @@ public interface EventoService {
     void listarEventos();
     void listarEventos(List<Evento> list);
     boolean registrarParticipanteAEvento(Evento evento, Participante participante);
-    List<Evento> listadoEventosDisponibles(LocalDate fecha);
-    List<Evento> listadoEventosNoDisponibles(LocalDate fecha);
-    boolean exportarArchivoDeEventos(LocalDate fecha);
+    List<Evento> listadoEventosDisponibles();
+    List<Evento> listadoEventosNoDisponibles();
+    boolean exportarArchivoDeEventos();
 }

@@ -19,9 +19,9 @@ public class Chef {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Chef Id       :").append(this.getId()).append('\n')
-                .append("Nombre       :").append(this.getNombre()).append('\n')
-                .append("Especialidad :").append(this.getEspecialidad()).append('\n')
+        stringBuilder.append("Chef Id     :").append(this.getId()).append('\n')
+                .append("Nombre      :").append(this.getNombre()).append('\n')
+                .append("Especialidad:").append(this.getEspecialidad()).append('\n')
                 .append("=====================================================").append('\n');
 
         return stringBuilder.toString();

@@ -21,7 +21,8 @@ public class MenuServiceImpl implements MenuService {
         ChefService chefs = new ChefServiceImpl(eventos);
         int opcion;
         do {
-            System.out.println("Ingrese opcion :");
+            System.out.println("Ingrese opcion:");
+            System.out.println("--------------");
             System.out.println("1. Crear un nuevo Evento");
             System.out.println("2. Listar Eventos");
             System.out.println("3. Inscripción de Participantes");
@@ -68,9 +69,13 @@ public class MenuServiceImpl implements MenuService {
                     resenias.listarResenias();
                     break;
                 case 10:
-                    //eventos.list  adoEventosDisponibles(new)
+                    eventos.listadoEventosDisponibles();
+                    break;
+                case 11:
+                    eventos.listadoEventosNoDisponibles();
                     break;
                 case 12:
+                    eventos.exportarArchivoDeEventos();
                     break;
                 default:
                     System.out.println("Opción de menú invalida.");

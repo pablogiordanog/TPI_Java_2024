@@ -6,6 +6,7 @@ import ar.com.gastronomiaycocina.entity.Resena;
 import ar.com.gastronomiaycocina.service.evento.EventoService;
 import ar.com.gastronomiaycocina.service.participante.ParticipanteService;
 import ar.com.gastronomiaycocina.service.resena.ResenaService;
+import ar.com.gastronomiaycocina.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,24 +65,14 @@ public class ResenaServiceImpl implements ResenaService {
         boolean isRegistro = Boolean.FALSE;
         System.out.println("Registrar Reseña de Evento");
         System.out.println("===========================");
-        System.out.println("Ingrese el ID del Evento:");
-        String idEvento = sc.nextLine();
-        sc.nextLine();
-        Evento eventoBusco = getEventoService().getEvento(UUID.fromString(idEvento));
+        UUID idEvento = Utils.ingreseUUI("Ingrese el ID del Evento:");
+        Evento eventoBusco = getEventoService().getEvento(idEvento);
         if(eventoBusco!=null) {
-            System.out.println("Ingrese el ID del Participante:");
-            String idParticipante = sc.nextLine();
-            sc.nextLine();
-
-            Participante participante = getParticipanteService().getParticipante(UUID.fromString(idParticipante));
+            UUID idParticipante = Utils.ingreseUUI("Ingrese el ID del Participante:");
+            Participante participante = getParticipanteService().getParticipante(idParticipante);
             if(participante!=null){
-                System.out.println("Ingrese una calificación (1...5):");
-                Integer calificacion = sc.nextInt();
-                sc.nextLine();
-
-                System.out.println("Ingrese un comentario:");
-                String comentario = sc.nextLine();
-                sc.nextLine();
+                Integer calificacion = Utils.ingreseNumero("Ingrese una calificación ", 1,5);
+                String comentario = Utils.ingreseTexto("Ingrese un comentario:",Boolean.TRUE);
 
                 Resena resena = new Resena(UUID.randomUUID(),eventoBusco,participante, calificacion,comentario);
                 this.getResenas().add(resena);
@@ -96,5 +87,4 @@ public class ResenaServiceImpl implements ResenaService {
         System.out.println("");
         return isRegistro;
     }
-
 }

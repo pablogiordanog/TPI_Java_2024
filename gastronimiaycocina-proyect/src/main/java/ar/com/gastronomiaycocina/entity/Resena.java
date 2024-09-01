@@ -20,7 +20,7 @@ public class Resena {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Reseña Id:").append(this.getId()).append('\n')
+        stringBuilder.append("Reseña    Id:").append(this.getId()).append('\n')
                 .append("Evento      :").append(this.getEvento().getNombre()).append('\n')
                 .append("Participante:").append(this.getParticipante().getNombreYApellido()).append('\n')
                 .append("Calificación:").append(this.getCalificiacion()).append('\n')

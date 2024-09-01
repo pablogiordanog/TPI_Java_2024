@@ -2,6 +2,7 @@ package ar.com.gastronomiaycocina;
 
 import ar.com.gastronomiaycocina.service.menu.MenuService;
 import ar.com.gastronomiaycocina.service.menu.impl.MenuServiceImpl;
+import ar.com.gastronomiaycocina.utils.Utils;
 
 import java.util.Scanner;
 
@@ -12,7 +13,6 @@ import java.util.Scanner;
 public class App 
 {
     public static void main( String[] args ) {
-
         Scanner scanner = new Scanner(System.in);
 
         MenuService menuService = new MenuServiceImpl();

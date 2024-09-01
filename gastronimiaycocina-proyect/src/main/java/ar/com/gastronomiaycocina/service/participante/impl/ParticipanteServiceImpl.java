@@ -2,11 +2,10 @@ package ar.com.gastronomiaycocina.service.participante.impl;
 
 import ar.com.gastronomiaycocina.entity.Evento;
 import ar.com.gastronomiaycocina.entity.Participante;
-import ar.com.gastronomiaycocina.entity.Resena;
 import ar.com.gastronomiaycocina.enumeration.InteresCulinario;
 import ar.com.gastronomiaycocina.service.evento.EventoService;
 import ar.com.gastronomiaycocina.service.participante.ParticipanteService;
-import ar.com.gastronomiaycocina.service.resena.ResenaService;
+import ar.com.gastronomiaycocina.utils.Utils;
 
 import java.util.*;
 
@@ -38,14 +37,11 @@ public class ParticipanteServiceImpl implements ParticipanteService {
         boolean isRegistro = Boolean.FALSE;
         System.out.println("Inscripción de Participante");
         System.out.println("============================");
-        System.out.println("Ingrese el ID del Evento:");
-        String idEvento = sc.nextLine();
-        sc.nextLine();
-        Evento eventoBusco = evento.getEvento(UUID.fromString(idEvento));
+        UUID id = Utils.ingreseUUI("Ingrese el ID del Evento:");
+        Evento eventoBusco = evento.getEvento(id);
         if(eventoBusco!=null){
-            System.out.println("Ingrese el Nombre y Apellido del Participante");
-            String nombre = sc.nextLine();
-            sc.nextLine();
+            System.out.println();
+            String nombre = Utils.ingreseTexto("Ingrese el Nombre y Apellido del Participante", Boolean.TRUE);
 
             System.out.println("Cual es su interes Culinario? elija una opción:");
             int opcion = 1;

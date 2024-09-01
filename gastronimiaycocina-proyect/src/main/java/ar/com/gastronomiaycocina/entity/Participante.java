@@ -19,7 +19,7 @@ public class Participante {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Participante Id:").append(this.getId()).append('\n')
+        stringBuilder.append("Participante Id  :").append(this.getId()).append('\n')
                 .append("Nombre y Apellido:").append(this.getNombreYApellido()).append('\n')
                 .append("Interes Culinario:").append(this.getInteresCulinario()).append('\n')
                 .append("=====================================================").append('\n');
