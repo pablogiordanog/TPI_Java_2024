@@ -48,7 +48,7 @@ public class MenuServiceImpl implements MenuService {
                     eventos.listarEventos();
                     break;
                 case 3:
-                    participantes.registrarInscripcion(eventos);
+                    participantes.registrarInscripcion();
                     break;
                 case 4:
                     participantes.listaDeParticipantes();

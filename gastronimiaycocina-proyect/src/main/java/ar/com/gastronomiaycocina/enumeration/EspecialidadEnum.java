@@ -1,5 +1,5 @@
 package ar.com.gastronomiaycocina.enumeration;
 
-public enum Especialidad {
+public enum EspecialidadEnum {
     PASTELERIA,COCINA_INTERNACIONAL,NINGUNA
 }

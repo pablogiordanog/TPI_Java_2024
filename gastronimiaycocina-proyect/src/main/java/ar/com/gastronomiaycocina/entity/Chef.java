@@ -1,6 +1,6 @@
 package ar.com.gastronomiaycocina.entity;
 
-import ar.com.gastronomiaycocina.enumeration.Especialidad;
+import ar.com.gastronomiaycocina.enumeration.EspecialidadEnum;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -8,9 +8,9 @@ import java.util.UUID;
 public class Chef {
     private UUID id;
     private String nombre;
-    private Especialidad especialidad;
+    private EspecialidadEnum especialidad;
 
-    public Chef(UUID id, String nombre, Especialidad especialidad){
+    public Chef(UUID id, String nombre, EspecialidadEnum especialidad){
         this.setId(id);
         this.setNombre(nombre);
         this.setEspecialidad(especialidad);
@@ -60,11 +60,11 @@ public class Chef {
         this.nombre = nombre;
     }
 
-    public Especialidad getEspecialidad() {
+    public EspecialidadEnum getEspecialidad() {
         return especialidad;
     }
 
-    public void setEspecialidad(Especialidad especialidad) {
+    public void setEspecialidad(EspecialidadEnum especialidad) {
         this.especialidad = especialidad;
     }
 }

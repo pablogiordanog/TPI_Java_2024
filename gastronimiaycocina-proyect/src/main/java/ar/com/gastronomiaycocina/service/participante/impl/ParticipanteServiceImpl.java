@@ -2,7 +2,7 @@ package ar.com.gastronomiaycocina.service.participante.impl;
 
 import ar.com.gastronomiaycocina.entity.Evento;
 import ar.com.gastronomiaycocina.entity.Participante;
-import ar.com.gastronomiaycocina.enumeration.InteresCulinario;
+import ar.com.gastronomiaycocina.enumeration.InteresCulinarioEnum;
 import ar.com.gastronomiaycocina.service.evento.EventoService;
 import ar.com.gastronomiaycocina.service.participante.ParticipanteService;
 import ar.com.gastronomiaycocina.utils.Utils;
@@ -32,36 +32,36 @@ public class ParticipanteServiceImpl implements ParticipanteService {
     }
 
     @Override
-    public boolean registrarInscripcion(EventoService evento) {
+    public boolean registrarInscripcion() {
         Scanner sc = new Scanner(System.in);
         boolean isRegistro = Boolean.FALSE;
         System.out.println("Inscripción de Participante");
         System.out.println("============================");
         UUID id = Utils.ingreseUUI("Ingrese el ID del Evento:");
-        Evento eventoBusco = evento.getEvento(id);
+        Evento eventoBusco = eventoService.getEvento(id);
         if(eventoBusco!=null){
             System.out.println();
             String nombre = Utils.ingreseTexto("Ingrese el Nombre y Apellido del Participante", Boolean.TRUE);
 
             System.out.println("Cual es su interes Culinario? elija una opción:");
             int opcion = 1;
-            for(InteresCulinario i:InteresCulinario.values()){
+            for(InteresCulinarioEnum i: InteresCulinarioEnum.values()){
                 System.out.println(opcion + ". " +i.name());
                 opcion++;
             }
             int opcionSel = sc.nextInt();
             sc.nextLine();
 
-            InteresCulinario interes;
+            InteresCulinarioEnum interes;
             switch (opcionSel){
-                case 1 -> interes = InteresCulinario.COMIDA_ITALIANA;
-                case 2 -> interes = InteresCulinario.COMIDA_MEXICANA;
-                case 3 -> interes = InteresCulinario.COMIDA_VEGANA;
-                default -> interes = InteresCulinario.NINGUNA;
+                case 1 -> interes = InteresCulinarioEnum.COMIDA_ITALIANA;
+                case 2 -> interes = InteresCulinarioEnum.COMIDA_MEXICANA;
+                case 3 -> interes = InteresCulinarioEnum.COMIDA_VEGANA;
+                default -> interes = InteresCulinarioEnum.NINGUNA;
             };
 
             Participante participante = new Participante(UUID.randomUUID(), nombre, interes);
-            if(evento.registrarParticipanteAEvento(eventoBusco, participante)){
+            if(eventoService.registrarParticipanteAEvento(eventoBusco, participante)){
                 this.getParticipantes().add(participante);
                 System.out.println("Participante Inscripto con éxito!");
                 System.out.println("");
@@ -73,9 +73,7 @@ public class ParticipanteServiceImpl implements ParticipanteService {
         return isRegistro;
     }
 
-
-    @Override
-    public List<Participante> getListaUnicaParticipantesEnEventos() {
+    private List<Participante> getListaUnicaParticipantesEnEventos() {
         Set<Participante> listasParticipantesSinRepetir = new HashSet<>();
         for(Evento evento:this.getEventoService().getEventos()){
             //Esto para generar una lista sin estudiantes repetidos

@@ -67,22 +67,25 @@ public class ResenaServiceImpl implements ResenaService {
         System.out.println("===========================");
         UUID idEvento = Utils.ingreseUUI("Ingrese el ID del Evento:");
         Evento eventoBusco = getEventoService().getEvento(idEvento);
-        if(eventoBusco!=null) {
-            UUID idParticipante = Utils.ingreseUUI("Ingrese el ID del Participante:");
-            Participante participante = getParticipanteService().getParticipante(idParticipante);
-            if(participante!=null){
-                Integer calificacion = Utils.ingreseNumero("Ingrese una calificación ", 1,5);
-                String comentario = Utils.ingreseTexto("Ingrese un comentario:",Boolean.TRUE);
 
-                Resena resena = new Resena(UUID.randomUUID(),eventoBusco,participante, calificacion,comentario);
-                this.getResenas().add(resena);
-                isRegistro = Boolean.TRUE;
-                System.out.println("Reseña registrada con éxito.");
-            }else{
-                System.out.println("El participante ingresado, No exite!");
+        UUID idParticipante = Utils.ingreseUUI("Ingrese el ID del Participante:");
+        Participante participante = getParticipanteService().getParticipante(idParticipante);
+
+        if(eventoBusco==null || participante==null) {
+            if(eventoBusco==null){
+                System.out.println("Evento no encontrado.");
             }
-        }else{
-            System.out.println("El evento ingresado, No existe!");
+            if(participante==null) {
+                System.out.println("Participante no encontrado.");
+            }
+        }else {
+            Integer calificacion = Utils.ingreseNumero("Ingrese una calificación ", 1, 5);
+            String comentario = Utils.ingreseTexto("Ingrese un comentario:", Boolean.TRUE);
+
+            Resena resena = new Resena(UUID.randomUUID(), eventoBusco, participante, calificacion, comentario);
+            this.getResenas().add(resena);
+            isRegistro = Boolean.TRUE;
+            System.out.println("Reseña registrada con éxito.");
         }
         System.out.println("");
         return isRegistro;

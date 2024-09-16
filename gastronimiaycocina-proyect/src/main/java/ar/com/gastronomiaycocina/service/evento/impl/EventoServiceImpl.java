@@ -90,7 +90,7 @@ public class EventoServiceImpl implements EventoService {
         if(evento.getParticipantes().equals(participante)){
             System.out.println("El participante ya se encuentra en el evento.");
         }else{
-            if(evento.isLlegoACapacidadMaxima()){
+            if(evento.esCapacidadMaxima()){
                 System.out.println("Se alcanzo la capacidad máxima del evento.");
                 System.out.println("No se ha inscripto al participante.");
             }else{
@@ -116,7 +116,7 @@ public class EventoServiceImpl implements EventoService {
             if(fecha.equals(fechaEvento)
                     || fecha.isBefore(fechaEvento)){
                 //Si es igual fecha a fecha de evento o si es antes la fecha a la del eveto
-                if(!evento.isLlegoACapacidadMaxima()){
+                if(!evento.esCapacidadMaxima()){
                     eventosDisponibles.add(evento);
                 }
             }
@@ -141,7 +141,7 @@ public class EventoServiceImpl implements EventoService {
             if(fecha.equals(fechaEvento)
                     || fecha.isBefore(fechaEvento)){
                 //Si es igual fecha a fecha de evento o si es antes la fecha a la del eveto
-                if(evento.isLlegoACapacidadMaxima()){
+                if(evento.esCapacidadMaxima()){
                     eventosNoDisponibles.add(evento);
                 }
             }

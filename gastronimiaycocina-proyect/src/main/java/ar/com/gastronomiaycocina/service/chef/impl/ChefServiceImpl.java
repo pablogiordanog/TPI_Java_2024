@@ -2,7 +2,7 @@ package ar.com.gastronomiaycocina.service.chef.impl;
 
 import ar.com.gastronomiaycocina.entity.Chef;
 import ar.com.gastronomiaycocina.entity.Evento;
-import ar.com.gastronomiaycocina.enumeration.Especialidad;
+import ar.com.gastronomiaycocina.enumeration.EspecialidadEnum;
 import ar.com.gastronomiaycocina.service.chef.ChefService;
 import ar.com.gastronomiaycocina.service.evento.EventoService;
 import ar.com.gastronomiaycocina.utils.Utils;
@@ -39,19 +39,19 @@ public class ChefServiceImpl implements ChefService {
 
         System.out.println("Cual es su Especialidad? elija una opción:");
         int opcion = 1;
-        for(Especialidad e:Especialidad.values()){
+        for(EspecialidadEnum e: EspecialidadEnum.values()){
             System.out.println(opcion + ". " +e.name());
             opcion++;
         }
         int opcionSel = sc.nextInt();
         sc.nextLine();
 
-        Especialidad especialidad;
+        EspecialidadEnum especialidad;
         switch (opcionSel){
-            case 1 -> especialidad = Especialidad.PASTELERIA;
-            case 2 -> especialidad = Especialidad.PASTELERIA;
-            case 3 -> especialidad = Especialidad.NINGUNA;
-            default -> especialidad = Especialidad.NINGUNA;
+            case 1 -> especialidad = EspecialidadEnum.PASTELERIA;
+            case 2 -> especialidad = EspecialidadEnum.PASTELERIA;
+            case 3 -> especialidad = EspecialidadEnum.NINGUNA;
+            default -> especialidad = EspecialidadEnum.NINGUNA;
         };
 
         Chef chef = new Chef(UUID.randomUUID(),nombre, especialidad);

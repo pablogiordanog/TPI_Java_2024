@@ -1,6 +1,6 @@
 package ar.com.gastronomiaycocina.entity;
 
-import ar.com.gastronomiaycocina.enumeration.InteresCulinario;
+import ar.com.gastronomiaycocina.enumeration.InteresCulinarioEnum;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -8,9 +8,9 @@ import java.util.UUID;
 public class Participante {
     private UUID id;
     private String nombreYApellido;
-    private InteresCulinario interesCulinario;
+    private InteresCulinarioEnum interesCulinario;
 
-    public Participante(UUID id, String nombreYApellido, InteresCulinario interesCulinario){
+    public Participante(UUID id, String nombreYApellido, InteresCulinarioEnum interesCulinario){
         this.setId(id);
         this.setNombreYApellido(nombreYApellido);
         this.setInteresCulinario(interesCulinario);
@@ -61,11 +61,11 @@ public class Participante {
         this.nombreYApellido = nombreYApellido;
     }
 
-    public InteresCulinario getInteresCulinario() {
+    public InteresCulinarioEnum getInteresCulinario() {
         return interesCulinario;
     }
 
-    public void setInteresCulinario(InteresCulinario interesCulinario) {
+    public void setInteresCulinario(InteresCulinarioEnum interesCulinario) {
         this.interesCulinario = interesCulinario;
     }
 }

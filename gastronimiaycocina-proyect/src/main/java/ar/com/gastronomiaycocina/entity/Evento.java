@@ -107,7 +107,7 @@ public class Evento {
         this.participantes = participantes;
     }
 
-    public boolean isLlegoACapacidadMaxima(){
+    public boolean esCapacidadMaxima(){
         int totalParcipantes = this.getParticipantes().size() + 1;
         return totalParcipantes>this.getCapacidad();
     }
