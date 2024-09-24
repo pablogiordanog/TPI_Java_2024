@@ -32,7 +32,7 @@ public class ParticipanteServiceImpl implements ParticipanteService {
     }
 
     @Override
-    public boolean registrarInscripcion() {
+    public boolean    registrarInscripcion() {
         Scanner sc = new Scanner(System.in);
         boolean isRegistro = Boolean.FALSE;
         System.out.println("Inscripción de Participante");
